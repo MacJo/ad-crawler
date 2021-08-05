@@ -1,14 +1,14 @@
 import ActiveDirectory from 'activedirectory2'
 import { writeFile } from 'fs'
-import { ADOptions } from './types/ad';
+import { ADOptions, exportFile } from './types/ad';
 
 export class ADcrawler {
 
-    getUsersfromGroup(global_group: string, config: ADOptions,  client: string): void {
+    getUsersfromGroup(global_group: string, config: ADOptions, expOption: exportFile): void {
         let ad = new ActiveDirectory(config);
 
         ad.getUsersForGroup(global_group, function (err: any, users: any) {
-            let usersngroups: any = [];
+            let usersngroups: Array<any> = [];
 
             if (err) {
                 throw new Error(err)
@@ -21,7 +21,7 @@ export class ADcrawler {
                                 usersngroups.push(user)
 
                                 if (usersngroups.length === number.length) {
-                                    writeFile('export/ad/usersfrom' + client + '.json', JSON.stringify(usersngroups), (err: any) => {
+                                    writeFile(expOption.path + expOption.name + '.' + expOption.fileType, JSON.stringify(usersngroups), (err: any) => {
                                         if (err) throw new Error(err)
                                     });
                                 }
