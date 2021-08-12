@@ -2,4 +2,4 @@
 
 ## Description
 
-Crawles all users per specific group.
+Crawles all users with metadata by specific group.
