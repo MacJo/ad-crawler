@@ -8,6 +8,10 @@
   },
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MacJo/ad-crawler"
+  },
   "devDependencies": {
     "@types/activedirectory2": "^1.2.3",
     "@types/chai": "^4.2.21",
